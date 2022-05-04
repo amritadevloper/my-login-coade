@@ -1,0 +1,65 @@
+{% if user.is_authenticated %}
+<a href="">logout</a>
+{{ user.first_name }}
+{%endif%}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Product</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/opensans-font.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/line-awesome/css/line-awesome.min.css' %}">
+	<!-- Jquery -->
+	<link rel="stylesheet" href="{% static 'https://jqueryvalidation.org/files/demo/site-demos.css' %}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body class="form-v7">
+	<div class="page-content">
+		<div class="form-v7-content">
+            
+			<form class="form-detail" action="" method="post" id="myform">
+				{% csrf_token %}
+                <h1>Add Product</h1>
+				<div class="form-row">
+					<label for="username">Name</label>
+					<input type="text" name="name" id="name" class="input-text">
+				</div>
+				<div class="form-row">
+					<label for="username">Price</label>
+					<input type="text" name="price" id="price" class="input-text">
+				</div>
+				<div class="form-row">
+					<label for="username">Category</label>
+					<input type="text" name="cato" id="category" class="input-text">
+				</div>
+				<div class="form-row">
+					<label for="your_email">Company</label>
+					<input type="text" name="comp" id="company" class="input-text">
+				</div>
+				<div class="form-row-last">
+					<input type="submit" name="add" class="register" value="ADD">
+					<p>Or<a href="showproduct">views all products</a></p>
+				</div>
+			</form>
+			{% if messages %}
+			{% for message in messages %}
+			{% if message.tags %}
+			<script>
+				alert("{{ message }}")
+
+				{% endif %}
+				{% endfor %}
+				{% endif %}
+			</script>
+		</div>
+	</div>
+	<script src="{% static 'https://code.jquery.com/jquery-1.11.1.min.js' %}"></script>
+	<script src="{% static 'https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js' %}"></script>
+	<script src="{% static 'https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js' %}"></script>
+</body>
+</html>

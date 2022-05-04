@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <form action="search" method="post" />
+            {% csrf_token %}
+            <input type="text" name="search" placeholder="Search Product" />
+            <input type="submit" name="sub" value="Search" />
+        </form>
+        <table align="center" border="1px">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Company</th>
+                <th>Delete Data</th>
+                <th>Update Data</th>
+            </tr>
+          {%for i in data%}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.category}}</td>
+                <td>{{i.company}}</td>
+                <td><a href="deldata?id={{i.id}}">Delete</a></td>
+                <td><a href="updatdatashow?id={{i.id}}">Update</a></td>
+            </tr>
+          {%endfor%}
+        </table>
+    </body>
+</html>
